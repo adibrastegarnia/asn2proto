@@ -1,7 +1,6 @@
 // Code generated from ASN_3gpp.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
-package parser // ASN_3gpp
-
+package asn // ASN_3gpp
 import "github.com/antlr/antlr4/runtime/Go/antlr"
 
 // ASN_3gppListener is a complete listener for a parse tree produced by ASN_3gppParser.
