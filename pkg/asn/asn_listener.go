@@ -1,10 +1,10 @@
-// Code generated from ASN_3gpp.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from ASN.g4 by ANTLR 4.7.1. DO NOT EDIT.
 
-package asn // ASN_3gpp
+package asn // ASN
 import "github.com/antlr/antlr4/runtime/Go/antlr"
 
-// ASN_3gppListener is a complete listener for a parse tree produced by ASN_3gppParser.
-type ASN_3gppListener interface {
+// ASNListener is a complete listener for a parse tree produced by ASNParser.
+type ASNListener interface {
 	antlr.ParseTreeListener
 
 	// EnterModules is called when entering the modules production.
@@ -78,15 +78,6 @@ type ASN_3gppListener interface {
 
 	// EnterComponentType is called when entering the componentType production.
 	EnterComponentType(c *ComponentTypeContext)
-
-	// EnterTag is called when entering the tag production.
-	EnterTag(c *TagContext)
-
-	// EnterNeedTag is called when entering the needTag production.
-	EnterNeedTag(c *NeedTagContext)
-
-	// EnterCondTag is called when entering the condTag production.
-	EnterCondTag(c *CondTagContext)
 
 	// EnterExtensionAdditions is called when entering the extensionAdditions production.
 	EnterExtensionAdditions(c *ExtensionAdditionsContext)
@@ -528,15 +519,6 @@ type ASN_3gppListener interface {
 
 	// ExitComponentType is called when exiting the componentType production.
 	ExitComponentType(c *ComponentTypeContext)
-
-	// ExitTag is called when exiting the tag production.
-	ExitTag(c *TagContext)
-
-	// ExitNeedTag is called when exiting the needTag production.
-	ExitNeedTag(c *NeedTagContext)
-
-	// ExitCondTag is called when exiting the condTag production.
-	ExitCondTag(c *CondTagContext)
 
 	// ExitExtensionAdditions is called when exiting the extensionAdditions production.
 	ExitExtensionAdditions(c *ExtensionAdditionsContext)
