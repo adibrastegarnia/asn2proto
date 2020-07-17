@@ -21,12 +21,16 @@ func (this *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
 }
 
 func main() {
+
 	input, _ := antlr.NewFileStream(os.Args[1])
+
 	lexer := asn.NewASNLexer(input)
-	antlr.NewCommonTokenStream(lexer, 0)
-	/*p := asn.NewASNLexer()
-	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
-	p.BuildParseTrees = true
-	tree := p.Json()
-	antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), tree)*/
+	for {
+		t := lexer.NextToken()
+		if t.GetTokenType() == antlr.TokenEOF {
+			break
+		}
+		fmt.Printf("%s (%q)\n",
+			lexer.SymbolicNames[t.GetTokenType()], t.GetText())
+	}
 }
