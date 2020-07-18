@@ -16,8 +16,26 @@ func NewAsnListener() *AsnListener {
 	return new(AsnListener)
 }
 
-func (l *AsnListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
+func (l *AsnListener) EnterEnumeratedValue(ctx *asn.EnumeratedValueContext) {
+	fmt.Println("hello")
 	fmt.Println(ctx.GetText())
+}
+
+func (l *AsnListener) EnterObjectClass(ctx asn.ObjectClassContext) {
+
+}
+
+func (l *AsnListener) ExitEveryRule(ctx antlr.ParserRuleContext) {
+	//fmt.Println("Exit:", ctx.GetText())
+}
+
+func (l *AsnListener) VisitTerminal(node antlr.TerminalNode) {
+	//fmt.Println("Terminal:", node.GetText())
+}
+
+func (l *AsnListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
+	//fmt.Println("Entry:", ctx.GetText())
+	//fmt.Println()
 
 }
 
@@ -32,7 +50,7 @@ func main() {
 	//p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
 
-	tree := p.AssignmentList()
+	tree := p.Assignment()
 	var listener AsnListener
 
 	antlr.ParseTreeWalkerDefault.Walk(&listener, tree)
