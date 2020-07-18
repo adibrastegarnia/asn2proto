@@ -34,6 +34,16 @@ antlr-docker:
 		--build-arg ANTLR_VERSION=${ANTLR_VERSION} \
 		-t onosproject/antlr:${ANTLR_VERSION}
 
+generate-asn-parser:
+generate-asn-parser: # @HEL generate asn parser and lexer using antlr docker image
+	docker run -it -v `pwd`:/go/src/github.com/adibrastegarnia/asn1toproto \
+		-w /go/src/github.com/adibrastegarnia/asn1toproto \
+		--entrypoint build/bin/generate-parser.sh \
+		onosproject/antlr:${ANTLR_VERSION}
+
+
+image: antlr-docker
+
 
 clean: # @HELP remove all the build artifacts
 	rm -rf ./build/_output
