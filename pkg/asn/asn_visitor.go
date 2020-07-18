@@ -1,8 +1,7 @@
-// Code generated from ASN.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from /go/src/github.com/adibrastegarnia/asn1toproto/pkg/grammar/ASN.g4 by ANTLR 4.8. DO NOT EDIT.
 
 package asn // ASN
 import "github.com/antlr/antlr4/runtime/Go/antlr"
-
 // A complete Visitor for a parse tree produced by ASNParser.
 type ASNVisitor interface {
 	antlr.ParseTreeVisitor
@@ -447,4 +446,5 @@ type ASNVisitor interface {
 
 	// Visit a parse tree produced by ASNParser#booleanValue.
 	VisitBooleanValue(ctx *BooleanValueContext) interface{}
+
 }
