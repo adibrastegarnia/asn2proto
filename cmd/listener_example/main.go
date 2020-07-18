@@ -29,10 +29,12 @@ func main() {
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 	p := asn.NewASNParser(stream)
 
-	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
+	//p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
-	tree := p.Parameter()
+
+	tree := p.AssignmentList()
 	var listener AsnListener
+
 	antlr.ParseTreeWalkerDefault.Walk(&listener, tree)
 
 }
