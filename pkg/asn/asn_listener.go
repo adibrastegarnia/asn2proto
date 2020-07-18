@@ -1,4 +1,4 @@
-// Code generated from ASN.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from /go/src/github.com/adibrastegarnia/asn1toproto/pkg/grammar/ASN.g4 by ANTLR 4.8. DO NOT EDIT.
 
 package asn // ASN
 import "github.com/antlr/antlr4/runtime/Go/antlr"

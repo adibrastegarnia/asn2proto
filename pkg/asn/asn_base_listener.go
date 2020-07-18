@@ -1,4 +1,4 @@
-// Code generated from ASN.g4 by ANTLR 4.7.1. DO NOT EDIT.
+// Code generated from /go/src/github.com/adibrastegarnia/asn1toproto/pkg/grammar/ASN.g4 by ANTLR 4.8. DO NOT EDIT.
 
 package asn // ASN
 import "github.com/antlr/antlr4/runtime/Go/antlr"
@@ -261,12 +261,10 @@ func (s *BaseASNListener) EnterUsefulObjectClassReference(ctx *UsefulObjectClass
 func (s *BaseASNListener) ExitUsefulObjectClassReference(ctx *UsefulObjectClassReferenceContext) {}
 
 // EnterExternalObjectClassReference is called when production externalObjectClassReference is entered.
-func (s *BaseASNListener) EnterExternalObjectClassReference(ctx *ExternalObjectClassReferenceContext) {
-}
+func (s *BaseASNListener) EnterExternalObjectClassReference(ctx *ExternalObjectClassReferenceContext) {}
 
 // ExitExternalObjectClassReference is called when production externalObjectClassReference is exited.
-func (s *BaseASNListener) ExitExternalObjectClassReference(ctx *ExternalObjectClassReferenceContext) {
-}
+func (s *BaseASNListener) ExitExternalObjectClassReference(ctx *ExternalObjectClassReferenceContext) {}
 
 // EnterObjectClassDefn is called when production objectClassDefn is entered.
 func (s *BaseASNListener) EnterObjectClassDefn(ctx *ObjectClassDefnContext) {}
@@ -485,12 +483,10 @@ func (s *BaseASNListener) EnterSubtypeElements(ctx *SubtypeElementsContext) {}
 func (s *BaseASNListener) ExitSubtypeElements(ctx *SubtypeElementsContext) {}
 
 // EnterVariableTypeValueSetFieldSpec is called when production variableTypeValueSetFieldSpec is entered.
-func (s *BaseASNListener) EnterVariableTypeValueSetFieldSpec(ctx *VariableTypeValueSetFieldSpecContext) {
-}
+func (s *BaseASNListener) EnterVariableTypeValueSetFieldSpec(ctx *VariableTypeValueSetFieldSpecContext) {}
 
 // ExitVariableTypeValueSetFieldSpec is called when production variableTypeValueSetFieldSpec is exited.
-func (s *BaseASNListener) ExitVariableTypeValueSetFieldSpec(ctx *VariableTypeValueSetFieldSpecContext) {
-}
+func (s *BaseASNListener) ExitVariableTypeValueSetFieldSpec(ctx *VariableTypeValueSetFieldSpecContext) {}
 
 // EnterObjectFieldSpec is called when production objectFieldSpec is entered.
 func (s *BaseASNListener) EnterObjectFieldSpec(ctx *ObjectFieldSpecContext) {}
@@ -595,12 +591,10 @@ func (s *BaseASNListener) EnterGeneralConstraint(ctx *GeneralConstraintContext) 
 func (s *BaseASNListener) ExitGeneralConstraint(ctx *GeneralConstraintContext) {}
 
 // EnterUserDefinedConstraintParameter is called when production userDefinedConstraintParameter is entered.
-func (s *BaseASNListener) EnterUserDefinedConstraintParameter(ctx *UserDefinedConstraintParameterContext) {
-}
+func (s *BaseASNListener) EnterUserDefinedConstraintParameter(ctx *UserDefinedConstraintParameterContext) {}
 
 // ExitUserDefinedConstraintParameter is called when production userDefinedConstraintParameter is exited.
-func (s *BaseASNListener) ExitUserDefinedConstraintParameter(ctx *UserDefinedConstraintParameterContext) {
-}
+func (s *BaseASNListener) ExitUserDefinedConstraintParameter(ctx *UserDefinedConstraintParameterContext) {}
 
 // EnterTableConstraint is called when production tableConstraint is entered.
 func (s *BaseASNListener) EnterTableConstraint(ctx *TableConstraintContext) {}
@@ -711,36 +705,28 @@ func (s *BaseASNListener) EnterAlternativeTypeLists(ctx *AlternativeTypeListsCon
 func (s *BaseASNListener) ExitAlternativeTypeLists(ctx *AlternativeTypeListsContext) {}
 
 // EnterExtensionAdditionAlternatives is called when production extensionAdditionAlternatives is entered.
-func (s *BaseASNListener) EnterExtensionAdditionAlternatives(ctx *ExtensionAdditionAlternativesContext) {
-}
+func (s *BaseASNListener) EnterExtensionAdditionAlternatives(ctx *ExtensionAdditionAlternativesContext) {}
 
 // ExitExtensionAdditionAlternatives is called when production extensionAdditionAlternatives is exited.
-func (s *BaseASNListener) ExitExtensionAdditionAlternatives(ctx *ExtensionAdditionAlternativesContext) {
-}
+func (s *BaseASNListener) ExitExtensionAdditionAlternatives(ctx *ExtensionAdditionAlternativesContext) {}
 
 // EnterExtensionAdditionAlternativesList is called when production extensionAdditionAlternativesList is entered.
-func (s *BaseASNListener) EnterExtensionAdditionAlternativesList(ctx *ExtensionAdditionAlternativesListContext) {
-}
+func (s *BaseASNListener) EnterExtensionAdditionAlternativesList(ctx *ExtensionAdditionAlternativesListContext) {}
 
 // ExitExtensionAdditionAlternativesList is called when production extensionAdditionAlternativesList is exited.
-func (s *BaseASNListener) ExitExtensionAdditionAlternativesList(ctx *ExtensionAdditionAlternativesListContext) {
-}
+func (s *BaseASNListener) ExitExtensionAdditionAlternativesList(ctx *ExtensionAdditionAlternativesListContext) {}
 
 // EnterExtensionAdditionAlternative is called when production extensionAdditionAlternative is entered.
-func (s *BaseASNListener) EnterExtensionAdditionAlternative(ctx *ExtensionAdditionAlternativeContext) {
-}
+func (s *BaseASNListener) EnterExtensionAdditionAlternative(ctx *ExtensionAdditionAlternativeContext) {}
 
 // ExitExtensionAdditionAlternative is called when production extensionAdditionAlternative is exited.
-func (s *BaseASNListener) ExitExtensionAdditionAlternative(ctx *ExtensionAdditionAlternativeContext) {
-}
+func (s *BaseASNListener) ExitExtensionAdditionAlternative(ctx *ExtensionAdditionAlternativeContext) {}
 
 // EnterExtensionAdditionAlternativesGroup is called when production extensionAdditionAlternativesGroup is entered.
-func (s *BaseASNListener) EnterExtensionAdditionAlternativesGroup(ctx *ExtensionAdditionAlternativesGroupContext) {
-}
+func (s *BaseASNListener) EnterExtensionAdditionAlternativesGroup(ctx *ExtensionAdditionAlternativesGroupContext) {}
 
 // ExitExtensionAdditionAlternativesGroup is called when production extensionAdditionAlternativesGroup is exited.
-func (s *BaseASNListener) ExitExtensionAdditionAlternativesGroup(ctx *ExtensionAdditionAlternativesGroupContext) {
-}
+func (s *BaseASNListener) ExitExtensionAdditionAlternativesGroup(ctx *ExtensionAdditionAlternativesGroupContext) {}
 
 // EnterRootAlternativeTypeList is called when production rootAlternativeTypeList is entered.
 func (s *BaseASNListener) EnterRootAlternativeTypeList(ctx *RootAlternativeTypeListContext) {}
