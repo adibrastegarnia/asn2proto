@@ -1,4 +1,14 @@
+export CGO_ENABLED=0
+export GO111MODULE=on
+
+.PHONY: build
+
+all:build
+
+build:
+	go build  -o build/_output/parser_example  ./cmd/parser_example
 
 
-parser:
-	go run golang.org/x/tools/cmd/goyacc -l -p parser -o pkg/parser/parser.go pkg/parser/asn1.y
+clean: # @HELP remove all the build artifacts
+	rm -rf ./build/_output
+
