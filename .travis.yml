@@ -1,0 +1,29 @@
+sudo: false
+
+language: go
+
+go:
+  - '1.14.x'
+
+services:
+  - docker
+
+notifications:
+  email: false
+
+branches:
+  only:
+    - master
+
+before_script:
+  - curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v1.23.7
+  - pushd .. && git clone https://github.com/onosproject/build-tools.git && popd
+
+
+
+jobs:
+  include:
+    - stage: build
+      name: "build and test"
+      script:
+        - make coverage
