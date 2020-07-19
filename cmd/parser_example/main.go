@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/adibrastegarnia/asn1toproto/pkg/asn"
+	"github.com/adibrastegarnia/asn2proto/pkg/asn"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 

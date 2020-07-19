@@ -1,3 +1,5 @@
+github.com/adibrastegarnia/asn1toproto v0.0.0-20200718232630-3055fd16275e h1:zPN2hJnSriQ/J3yyT5RfkWSTCsbOtxarDHEcF3CEKjk=
+github.com/adibrastegarnia/asn1toproto v0.0.0-20200718232630-3055fd16275e/go.mod h1:/ZYmgcpn4lTtgXyjgLHvpTMZIzUfoWyrOGbCWD4qgxA=
 github.com/alecthomas/kong v0.2.11 h1:RKeJXXWfg9N47RYfMm0+igkxBCTF4bzbneAxaqid0c4=
 github.com/alecthomas/kong v0.2.11/go.mod h1:kQOmtJgV+Lb4aj+I2LEn40cbtawdWJ9Y8QLq+lElKxE=
 github.com/alecthomas/participle v0.5.0 h1:tT0WyXKiXyzwoCaXCfFlJQjFo1p54xWg9ZccCYJURnE=

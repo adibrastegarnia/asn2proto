@@ -15,40 +15,13 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
-	"github.com/adibrastegarnia/asn1toproto/pkg/asn"
+	"github.com/adibrastegarnia/asn2proto/pkg/listeners"
+
+	"github.com/adibrastegarnia/asn2proto/pkg/asn"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
-
-// AsnListener ...
-type AsnListener struct {
-	*asn.BaseASNListener
-}
-
-// EnterEnumeratedValue ...
-func (l *AsnListener) EnterEnumeratedValue(ctx *asn.EnumeratedValueContext) {
-	fmt.Println("hello")
-	fmt.Println(ctx.GetText())
-}
-
-// ExitEveryRule ...
-func (l *AsnListener) ExitEveryRule(ctx antlr.ParserRuleContext) {
-	//fmt.Println("Exit:", ctx.GetText())
-}
-
-// VisitTerminal ...
-func (l *AsnListener) VisitTerminal(node antlr.TerminalNode) {
-	//fmt.Println("Terminal:", node.GetText())
-}
-
-// EnterEveryRule ...
-func (l *AsnListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
-	//fmt.Println("Entry:", ctx.GetText())
-	//fmt.Println()
-
-}
 
 func main() {
 
@@ -58,11 +31,10 @@ func main() {
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 	p := asn.NewASNParser(stream)
 
-	//p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
+	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
-
-	tree := p.Assignment()
-	var listener AsnListener
+	tree := p.Modules()
+	var listener listeners.BaseASNListener
 
 	antlr.ParseTreeWalkerDefault.Walk(&listener, tree)
 
