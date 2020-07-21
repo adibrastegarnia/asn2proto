@@ -2,7 +2,7 @@
 
 ```bash
 make 
-./build/_output/protogen <ASN.1 source file path> <Proto file path> 
+./build/_output/asn2proto <ASN.1 source file path> <Proto file path> 
 ```
 
 

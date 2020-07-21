@@ -9,7 +9,7 @@ all:build
 
 build:
 	go build  -o build/_output/parser_example  ./cmd/parser_example
-	go build  -o build/_output/protogen  ./cmd/protogen
+	go build  -o build/_output/asn2proto  ./cmd/asn2proto
 
 
 coverage: # @HELP generate unit test coverage data
