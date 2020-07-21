@@ -34,7 +34,7 @@ func main() {
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 	p := asn.NewASNParser(stream)
 
-	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
+	p.AddErrorListener(antlr.NewConsoleErrorListener())
 	p.BuildParseTrees = true
 	tree := p.Modules()
 	var listener listeners.BaseASNListener
