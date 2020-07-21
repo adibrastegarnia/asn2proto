@@ -15,6 +15,10 @@
 package listeners
 
 import (
+	"strings"
+
+	"github.com/adibrastegarnia/asn2proto/pkg/models"
+
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 
 	"github.com/adibrastegarnia/asn2proto/pkg/asn"
@@ -23,11 +27,16 @@ import (
 // BaseASNListener is a complete listener for a parse tree produced by ASNParser.
 type BaseASNListener struct {
 	*asn.BaseASNListener
+	assignments []models.Assignment
+}
+
+// GetAssignments
+func (s *BaseASNListener) GetAssignments() []models.Assignment {
+	return s.assignments
 }
 
 // VisitTerminal is called when a terminal node is visited.
-func (s *BaseASNListener) VisitTerminal(node antlr.TerminalNode) {
-}
+func (s *BaseASNListener) VisitTerminal(node antlr.TerminalNode) {}
 
 // VisitErrorNode is called when an error node is visited.
 func (s *BaseASNListener) VisitErrorNode(node antlr.ErrorNode) {}
@@ -135,16 +144,36 @@ func (s *BaseASNListener) EnterAssignmentList(ctx *asn.AssignmentListContext) {}
 func (s *BaseASNListener) ExitAssignmentList(ctx *asn.AssignmentListContext) {}
 
 // EnterAssignment is called when production assignment is entered.
-func (s *BaseASNListener) EnterAssignment(ctx *asn.AssignmentContext) {}
+func (s *BaseASNListener) EnterAssignment(ctx *asn.AssignmentContext) {
+	name := ctx.
+		GetChild(0).
+		GetPayload().(*antlr.CommonToken).GetText()
+	assignment := models.Assignment{
+		Name: name,
+	}
+	s.assignments = append(s.assignments, assignment)
+}
 
 // ExitAssignment is called when production assignment is exited.
-func (s *BaseASNListener) ExitAssignment(ctx *asn.AssignmentContext) {}
+func (s *BaseASNListener) ExitAssignment(ctx *asn.AssignmentContext) {
+	lastAssignment := getLastAssignment(s.assignments)
+	s.assignments[len(s.assignments)-1] = lastAssignment
+}
 
 // EnterSequenceType is called when production sequenceType is entered.
-func (s *BaseASNListener) EnterSequenceType(ctx *asn.SequenceTypeContext) {}
+func (s *BaseASNListener) EnterSequenceType(ctx *asn.SequenceTypeContext) {
+	_type := ctx.
+		GetChild(0).
+		GetPayload().(*antlr.CommonToken).GetText()
+
+	lastAssignment := getLastAssignment(s.assignments)
+	lastAssignment.Type = _type
+	s.assignments[len(s.assignments)-1] = lastAssignment
+}
 
 // ExitSequenceType is called when production sequenceType is exited.
-func (s *BaseASNListener) ExitSequenceType(ctx *asn.SequenceTypeContext) {}
+func (s *BaseASNListener) ExitSequenceType(ctx *asn.SequenceTypeContext) {
+}
 
 // EnterExtensionAndException is called when production extensionAndException is entered.
 func (s *BaseASNListener) EnterExtensionAndException(ctx *asn.ExtensionAndExceptionContext) {}
@@ -538,7 +567,10 @@ func (s *BaseASNListener) EnterObjectSetOptionalitySpec(ctx *asn.ObjectSetOption
 func (s *BaseASNListener) ExitObjectSetOptionalitySpec(ctx *asn.ObjectSetOptionalitySpecContext) {}
 
 // EnterTypeAssignment is called when production typeAssignment is entered.
-func (s *BaseASNListener) EnterTypeAssignment(ctx *asn.TypeAssignmentContext) {}
+func (s *BaseASNListener) EnterTypeAssignment(ctx *asn.TypeAssignmentContext) {
+
+	//fmt.Println("Enter Type Assignment:", ctx.GetText())
+}
 
 // ExitTypeAssignment is called when production typeAssignment is exited.
 func (s *BaseASNListener) ExitTypeAssignment(ctx *asn.TypeAssignmentContext) {}
@@ -782,7 +814,15 @@ func (s *BaseASNListener) EnterNamedType(ctx *asn.NamedTypeContext) {}
 func (s *BaseASNListener) ExitNamedType(ctx *asn.NamedTypeContext) {}
 
 // EnterEnumeratedType is called when production enumeratedType is entered.
-func (s *BaseASNListener) EnterEnumeratedType(ctx *asn.EnumeratedTypeContext) {}
+func (s *BaseASNListener) EnterEnumeratedType(ctx *asn.EnumeratedTypeContext) {
+	_type := ctx.
+		GetChild(0).
+		GetPayload().(*antlr.CommonToken).GetText()
+
+	lastAssignment := getLastAssignment(s.assignments)
+	lastAssignment.Type = _type
+	s.assignments[len(s.assignments)-1] = lastAssignment
+}
 
 // ExitEnumeratedType is called when production enumeratedType is exited.
 func (s *BaseASNListener) ExitEnumeratedType(ctx *asn.EnumeratedTypeContext) {}
@@ -806,7 +846,29 @@ func (s *BaseASNListener) EnterEnumeration(ctx *asn.EnumerationContext) {}
 func (s *BaseASNListener) ExitEnumeration(ctx *asn.EnumerationContext) {}
 
 // EnterEnumerationItem is called when production enumerationItem is entered.
-func (s *BaseASNListener) EnterEnumerationItem(ctx *asn.EnumerationItemContext) {}
+func (s *BaseASNListener) EnterEnumerationItem(ctx *asn.EnumerationItemContext) {
+	lastAssignment := getLastAssignment(s.assignments)
+	childPayload := ctx.GetChild(0).GetPayload()
+	var enumItem string
+	switch childPayload.(type) {
+	case *antlr.BaseParserRuleContext:
+		enumItem = ctx.GetChild(0).
+			GetPayload().(*antlr.BaseParserRuleContext).GetText()
+
+	case *antlr.CommonToken:
+		enumItem = ctx.GetChild(0).
+			GetPayload().(*antlr.CommonToken).GetText()
+	}
+
+	if idx := strings.Index(enumItem, "("); idx != -1 {
+		enumItem = enumItem[:idx]
+	}
+	lastAssignment.Assignments = append(lastAssignment.Assignments, models.Assignment{
+		Name: enumItem,
+	})
+
+	s.assignments[len(s.assignments)-1] = lastAssignment
+}
 
 // ExitEnumerationItem is called when production enumerationItem is exited.
 func (s *BaseASNListener) ExitEnumerationItem(ctx *asn.EnumerationItemContext) {}
@@ -866,7 +928,15 @@ func (s *BaseASNListener) EnterAdditionalEnumeration(ctx *asn.AdditionalEnumerat
 func (s *BaseASNListener) ExitAdditionalEnumeration(ctx *asn.AdditionalEnumerationContext) {}
 
 // EnterIntegerType is called when production integerType is entered.
-func (s *BaseASNListener) EnterIntegerType(ctx *asn.IntegerTypeContext) {}
+func (s *BaseASNListener) EnterIntegerType(ctx *asn.IntegerTypeContext) {
+	_type := ctx.
+		GetChild(0).
+		GetPayload().(*antlr.CommonToken).GetText()
+
+	lastAssignment := getLastAssignment(s.assignments)
+	lastAssignment.Type = _type
+	s.assignments[len(s.assignments)-1] = lastAssignment
+}
 
 // ExitIntegerType is called when production integerType is exited.
 func (s *BaseASNListener) ExitIntegerType(ctx *asn.IntegerTypeContext) {}

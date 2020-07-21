@@ -12,30 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main
+syntax = "proto3";
 
-import (
-	"os"
+package test;
 
-	"github.com/adibrastegarnia/asn2proto/pkg/listeners"
+{{printf "\n" -}}
 
-	"github.com/adibrastegarnia/asn2proto/pkg/asn"
-	"github.com/antlr/antlr4/runtime/Go/antlr"
-)
-
-func main() {
-
-	input, _ := antlr.NewFileStream(os.Args[1])
-
-	lexer := asn.NewASNLexer(input)
-	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-	p := asn.NewASNParser(stream)
-
-	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
-	p.BuildParseTrees = true
-	tree := p.Modules()
-	var listener listeners.BaseASNListener
-
-	antlr.ParseTreeWalkerDefault.Walk(&listener, tree)
-
+{{- range $index, $assignment := . }}
+{{- if eq $assignment.Type "ENUMERATED"}}
+enum {{$assignment.Name}} {
+     {{- range $index, $val := $assignment.Assignments}}
+      {{$val.Name | replaceHyphen}} = {{$index}};
+     {{- end}}
 }
+{{ end}}
+{{- end}}

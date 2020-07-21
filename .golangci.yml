@@ -26,3 +26,16 @@ issues:
     - Error return value of `.*Flush` is not checked
     - Error return value of `.*Write` is not checked
     - Error return value of `.*Stop` is not checked
+  exclude-rules:
+    - path: pkg/listeners/base_listener.go
+      linters:
+        - gofmt
+        - gocyclo
+        - golint
+        - misspell
+        - typecheck
+        - errcheck
+        - dogsled
+        - unconvert
+        - nakedret
+        - scopelint

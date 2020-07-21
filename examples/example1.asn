@@ -10,6 +10,20 @@ MyTypes ::= SEQUENCE {
                  }
 }
 
+ColorType ::= ENUMERATED
+       {
+          red      (0),
+          white    (1),
+          blue     (2)
+       }
+
+Animals ::= ENUMERATED
+       {
+          dog     (0),
+          cat     (1),
+          horse   (2)
+       }
+
 MyInt ::= INTEGER (0..65535)
 
 END
